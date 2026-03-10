@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Anisa Catering | Link Tree</title>
+
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css?family=Poppins:100,100italic,200,200italic,300,300italic,regular,italic,500,500italic,600,600italic,700,700italic,800,800italic,900,900italic" rel="stylesheet" />
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      colors: {
+        accent: "#7C3AED"
+      }
+    }
+  }
+}
+</script>
+
+</head>
+
+<body class="font-['Poppins'] bg-gray-50 min-h-screen flex items-center justify-center">
+
+<div class="w-full max-w-md px-6">
+  <div id="profile" class="text-center mb-8"></div>
+  <div id="links" class="space-y-4"></div>
+  <p id="footer" class="text-center text-gray-400 text-sm mt-8"></p>
+</div>
+
+<script>
+
+// STATIC JSON DATA
+const data = {
+  profile: {
+    name: "Anisa Catering",
+    bio: "Catering, Snack & Kue Kering",
+    avatar: "images/Logo Anisa Catering square.png"
+  },
+
+  links: [
+    {
+      title: "MARKETING 1",
+      url: "https://wa.me/6288226457475",
+      desc: "Wedding, Lamaran Khitanan"
+    },
+    {
+      title: "MARKETING 2",
+      url: "https://wa.me/6288226457475",
+      desc: "Wedding, Lamaran Khitanan"
+    },
+    {
+      title: "MARKETING 3",
+      url: "https://wa.me/6288226457475",
+      desc: "Wedding, Lamaran Khitanan"
+    },
+    {
+      title: "MARKETING 4",
+      url: "https://wa.me/6288226457475",
+      desc: "Wedding, Lamaran Khitanan"
+    },
+    {
+      title: "MARKETING 5",
+      url: "https://wa.me/6288226457475",
+      desc: "Wedding, Lamaran Khitanan"
+    }
+  ],
+
+  footer: "© 2026 Anisa Catering"
+}
+
+
+// RENDER PROFILE
+const profile = document.getElementById("profile")
+
+profile.innerHTML = `
+  <div class="w-28 h-28 mx-auto shadow-lg border-4 border-white object-contain flex content-center items-center overflow-hidden rounded-full p-4">
+    <img class="object-contain" src="${data.profile.avatar}" alt="${data.profile.name}">
+  </div>
+
+  <h1 class="text-2xl font-bold mt-4 text-gray-800">
+  ${data.profile.name}
+  </h1>
+
+  <p class="text-gray-500">
+  ${data.profile.bio}
+  </p>
+`
+
+
+// RENDER LINKS
+const linksContainer = document.getElementById("links")
+
+data.links.forEach(link => {
+
+  const el = document.createElement("a")
+
+  el.href = link.url
+  el.target = "_blank"
+
+  el.className =
+  "block text-center bg-white border border-gray-200 p-4 flex flex-col rounded-xl shadow-sm hover:shadow-md hover:border-accent hover:text-accent transition font-medium"
+
+  el.innerHTML = `<h1 class="text-lg font-bold text-gray-800">${link.title}</h1><p class="text-sm mb-0 text-gray-500">${link.desc}</p>`
+
+
+  linksContainer.appendChild(el)
+
+})
+
+
+// FOOTER
+document.getElementById("footer").innerText = data.footer
+
+</script>
+
+</body>
+</html>
